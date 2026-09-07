@@ -1,5 +1,7 @@
 import type { MetadataRoute } from 'next';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = 'https://kashiyatra.travel';
   const routes = ['', '/about', '/places', '/hotels', '/plan-trip', '/contact'];

@@ -4,6 +4,10 @@
 
 @layer base {
   :root {
+    /* Network-independent font stacks: deployments do not need Google Fonts access. */
+    --font-inter: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-playfair: "Playfair Display", Georgia, "Times New Roman", serif;
+
     /* Warm cream background */
     --background: 40 50% 98%;
     --foreground: 20 15% 15%;

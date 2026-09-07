@@ -59,6 +59,8 @@ type FormState = typeof INITIAL_FORM;
 const inputClass =
   "w-full rounded-lg border border-border bg-background px-4 py-3 text-sm outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/30";
 
+const isStaticSite = process.env.NEXT_PUBLIC_STATIC_SITE === "true";
+
 /** Today in YYYY-MM-DD, used as the `min` for the date pickers. */
 function todayIso() {
   const now = new Date();
@@ -110,6 +112,11 @@ export default function PlanTripForm() {
     const adults = Number(form.adults);
     if (!Number.isInteger(adults) || adults < 1) {
       return setError("There must be at least one adult traveller.");
+    }
+    if (isStaticSite) {
+      return setError(
+        "Trip submissions are unavailable on this GitHub Pages preview. Please contact us by WhatsApp or email."
+      );
     }
 
     setLoading(true);

@@ -9,6 +9,8 @@ import { Label } from '@/components/ui/label';
 import { toast } from '@/hooks/use-toast';
 import { SITE_CONFIG, whatsappLink, telLink } from '@/lib/site-config';
 
+const isStaticSite = process.env.NEXT_PUBLIC_STATIC_SITE === 'true';
+
 export default function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
@@ -26,6 +28,13 @@ export default function ContactPage() {
         title: 'Please fill in all required fields',
         description: 'Name, email, and message are required.',
         variant: 'destructive',
+      });
+      return;
+    }
+    if (isStaticSite) {
+      toast({
+        title: 'Please contact us directly',
+        description: 'This GitHub Pages preview cannot send forms. Use WhatsApp, phone, or email instead.',
       });
       return;
     }
